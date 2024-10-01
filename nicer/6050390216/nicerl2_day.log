@@ -1,0 +1,131 @@
+nicerl2 1.33
+--------------------------------------------------------
+         Requested task operations: MKF,CALMERGE,SCREEN
+       Processed prefilter_columns: NICERV5,-MPU_OVER_COUNT,-MPU_UNDER_COUNT,-MPU_XRAY_COUNT,-MPU_ALL_COUNT
+   Processed niprefilter2_coltypes: BASE,NICERV5
+          Processed geomag_columns: kp_potsdam.fits(KP),solarphi_oulu.fits(SOLAR_PHI),COR_NYM
+  Inputs:
+  (INDIR) 6050390216
+  (UF)    6050390216/xti/event_uf
+  (CL)    6050390216/xti/event_cl
+  (MKF)   6050390216/auxil/ni6050390216.mkf
+
+                        MPU List: 0-6
+                          OBS_ID: 6050390216
+                          OBJECT: Swift_J0243.6+6124
+                        Position: RA    40.9186  Dec    61.4323 [deg] OBJECT
+                                  RA    40.9177  Dec    61.4322 [deg] NOMINAL
+                                  RA        OBJ  Dec        OBJ [deg] REQUESTED
+
+  CALDBVER = xti20240206
+  SOFTVER  = Hea_19Apr2024_V6.33.2_NICER_2024-02-09_V012A
+
+========== Running nicercal ==========
+nicercal 1.12
+  MPU List: 0-6
+  MPU0 ni6050390216_0mpu0_ufa.evt
+  MPU1 ni6050390216_0mpu1_ufa.evt
+  MPU2 ni6050390216_0mpu2_ufa.evt
+  MPU3 ni6050390216_0mpu3_ufa.evt
+  MPU4 ni6050390216_0mpu4_ufa.evt
+  MPU5 ni6050390216_0mpu5_ufa.evt
+  MPU6 ni6050390216_0mpu6_ufa.evt
+nimpumerge 1.7
+  Master sort -> 6050390216/xti/event_cl/ni6050390216_0mpu7_ufa.evt
+  Append MPU GTIs
+nifpmsel 1.9
+  FPM List: launch
+  Recalculating GTIs
+========== Running niprefilter/niprefilter2 ==========
+niprefilter 2.11
+  Running prefilter
+========== Running niprefilter2 ==========
+niprefilter2 2.10
+  Searching geomagnetic quantities
+      (geomagnetic data from /home/supremekai/heasoft/heasoft-6.33.2/attitude/lib/geomag)
+  Creating output file
+  MPU HK files
+  MPU0     (HK)     (Event) 
+  MPU1     (HK)     (Event) 
+  MPU2     (HK)     (Event) 
+  MPU3     (HK)     (Event) 
+  MPU4     (HK)     (Event) 
+  MPU5     (HK)     (Event) 
+  MPU6     (HK)     (Event) 
+  Event files
+  Filter-level calculations
+  Filter-level interpolations
+    File: kp_potsdam.fits    Column: KP
+    File: solarphi_oulu.fits    Column: SOLAR_PHI
+  Adding COR_NYM 
+  Adding DELTA_SLOW_LLD 
+  Adding XTI_PNT_JITTER 
+  Adding ANG_DIST_{X,Y} (target offset) 
+  Appending original extension
+  Filter file: 6050390216/auxil/ni6050390216.mkf
+========== Running nimaketime ==========
+nimaketime 1.13
+        Tracking?: REQUIRED
+        On Target: < 54 [arcsec]
+        Elevation: < 15 [deg]
+     Bright Earth: < 30 [deg]
+   Number of FPMs: > 7
+Star tracker good: REQUIRED
+  TOT_LOWMEM_FIFO: SKIP
+   DELTA_SLOW_LLD: 32.0-38.0
+        NICER_SAA: SCREEN OUT
+              SAA: SKIP
+          COR_SAX: *-*
+  UNDERONLY Range: 0-500
+   OVERONLY Range: *-30
+   Running maketime
+
+                 Summary of Temporal Filtering
+       Successive Filtering Stage     GoodTime #GTI
+   ------------------------------   ---------- ----
+            On-Target + Observing      3185.00    2  
+       LOWMEM + Threshold Quality         0.00    1  
+                SAA + COR + Orbit         0.00    1  
+                      Undershoots         0.00    1  
+                       Overshoots         0.00    1  
+                     Filtered GTI         0.00    1  
+========== Running nicermergeclean ==========
+nicermergeclean 1.12
+niautoscreen 1.3
+   FPM exposure check
+   FPM round-robbin check
+   Under(only)shoot check
+   Over(only)shoot check
+   Noise rate check
+   Extended noise peak (0.3-0.7 keV)
+   MPU LOWMEM FIFO data losses
+   Per-MPU shredded GTI check
+       ---------------------------- Pointing GTIs ---------------------------
+       ---------- MET ------------  ------------------UTC--------------------
+   GTI        START -         STOP                START -                STOP
+     1 293886783.00 - 293888332.00  2023-04-25T11:13:01 - 2023-04-25T11:38:50
+     2 293930479.00 - 293932075.00  2023-04-25T23:21:17 - 2023-04-25T23:47:53
+
+                       Screened FPM / MPU quicklook table
+                              DET_ID Number                       |  MPU Num.
+        F0       1       2       3       4       5       6        |          
+   GTI  F01234567012345670123456701234567012345670123456701234567 |  M0123456
+     1  F.......X.O....X.O.O.X...X..............X....X...O....... |  MX.XXXX.
+     2  F....X..X.O....X.OXO.X...X...................X...O....... |  MX.XXXX.
+            Footnotes  O=known non-functional; X=screened; '.'=good
+
+   Screening will disable some detectors
+     detlist=-MPU0,-07,-16,-MPU2,-24,-MPU3,-30,-MPU4,-MPU5,-54...
+nicerclean 1.12
+           PI Range: 20 - 1500
+     Trumpet Filter: 1.100000+120.000000/PI+0.000000e+00*PI**4
+              Flags: Under(-) Under(-) Forced(-) NRing(-) Datamode(so+s+f)
+         Expression: (((MPU_UNDER_COUNT<80)||(EVENT_FLAGS==bx0x1x000)))
+  Screening...
+  Updating keywords in output file...
+nifpmsel 1.9
+  FPM List: launch,@6050390216/xti/event_cl/ni6050390216_0mpu7_ufa.evt_detlist.txt
+  Recalculating GTIs
+Event files written
+ UFA: 6050390216/xti/event_cl/ni6050390216_0mpu7_ufa.evt
+  CL: 6050390216/xti/event_cl/ni6050390216_0mpu7_cl_day.evt

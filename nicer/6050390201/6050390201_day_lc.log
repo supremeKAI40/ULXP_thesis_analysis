@@ -1,0 +1,41 @@
+nicerl3-lc 2.0
+--------------------------------------------------------
+...indir=6050390201...
+...cldir=6050390201/xti/event_cl...
+...obsid=AUTO...
+...normalized obsid=*...
+   (checking MKF pattern 6050390201/xti/event_cl/ni*.mkf)
+   (checking MKF pattern 6050390201/xti/event_cl/ni*.mkf.gz)
+   (checking MKF pattern 6050390201/auxil/ni*.mkf)
+...mkfile=6050390201/auxil/ni6050390201.mkf...
+  (searching for filter files with pattern 6050390201/auxil/ni6050390201.mkf)
+  MKF file candidate 6050390201/auxil/ni6050390201.mkf
+     OBS_ID = 6050390201
+  MKF file candidate 6050390201/auxil/ni6050390201.mkf.gz
+     OBS_ID = 6050390201
+...ufafile=6050390201/xti/event_cl/ni6050390201_0mpu7_ufa.evt...
+...clfile=6050390201/xti/event_cl/ni6050390201_0mpu7_cl_day_barycorr.evt...
+...inroot=6050390201/xti/event_cl/ni6050390201_cl_day_barycorr...
+ftcopy infile='6050390201/xti/event_cl/ni6050390201_0mpu7_cl_day_barycorr.evt[FPM_SEL][col *;NUM_FPM_SEL=SUM(FPM_SEL);CHG=100.0*(0.0+NUM_FPM_SEL-NUM_FPM_SEL{-1})/MAX(NUM_FPM_SEL{-1},0.001);]'  outfile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_nfpmsel.fits'  copyall=NO clobber=YES chatter=0 history=NO 
+maketime infile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_nfpmsel.fits' outfile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti.fits' expr='!ISNULL(CHG) && NUM_FPM_SEL > 0 && ABS(CHG) < 10' name=NAME value=VALUE time=TIME start=START stop=STOP compact=NO copykw=YES histkw=NO prefr=0.5 postfr=0.5 premax=2.0 postmax=2.0 mingti=0 emptygti=APPLY clobber=YES 
+ftadjustgti infile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti.fits' outfile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti1.fits' preenlarge=-1.6 postenlarge=-1.6 mingti=0 maxgap=0 emptygti=APPLY start=START stop=STOP copyall=YES clobber=YES 
+...gtifile=6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti1.fits...
+   Create LC 6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc
+niextlc infile='6050390201/xti/event_cl/ni6050390201_0mpu7_cl_day_barycorr.evt' outfile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc' timebin=0.00025 pirange=80-1200 timefile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti1.fits' cleanup=YES clobber=YES chatter=3 
+niextlc 1.0
+--------------------------------------------------------
+...Run extractor...
+extractor filename='6050390201/xti/event_cl/ni6050390201_0mpu7_cl_day_barycorr.evt[PI=80:1200]' phafile=NONE eventsout=NONE regionfile=NONE qdpfile=NONE fitsbinlc='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc' unbinlc=NONE imgfile=NONE lcthresh=0.1 lctzero=YES timefile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_detgoodgti1.fits' adjustgti=no gstring=NONE usetpixrsel=no timeorder=no xcolf=RAWX ycolf=RAWY xcolh=NONE ycolh=NONE xfkey=TLMAX yfkey=TLMAX xhkey=TLMAX yhkey=TLMAX phamax=TLMAX specbin=1 binh=1 binf=1 binlc=0.00025 tcol='TIME' ecol='PI' ccol=NONE gcol=NONE polwcol=NONE gti='GTI' gtinam='GTI' events='EVENTS' timeref=40000.00 wtmapb=no stokes=NONE exitnow=no clobber=no 1> 6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc-stdout.log 2> 6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc-stderr.log 
+...output to 6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc...
+--------------------------------------------------------
+DONE
+   (done)
+finterp  infile1='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc'  infile2='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc_nfpmsel.fits[1][col *;TIME=TIME+#TIMEZERO+1.0]'  outfile='6050390201/xti/event_cl/ni6050390201_cl_day_barycorrmpu7_sr_day.lc'  incol='NUM_FPM_SEL(E)'  sortkey1='(TIME+#TIMEZERO)' sortkey2='TIME'  order=0 tcheck=NO extrap=REPEAT errdegrade=NO  copyall=YES 
+ERROR: could not recompute normalized RATE/ERROR at /home/supremekai/heasoft/heasoft-6.33.2/x86_64-pc-linux-gnu-libc2.31/bin/nicerl3-lc line 924.
+Dumping CFITSIO error stack:
+--------------------------------------------------
+Array not large enough to hold at least one row of data.
+--------------------------------------------------
+CFITSIO error stack dump complete.
+Task nicerl3-lc 2.0 terminating with status -1
+...normalization factor((52* (1.0 / NUM_FPM_SEL)))...

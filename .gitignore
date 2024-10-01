@@ -1,14 +1,3 @@
-nicer/6050*/auxil/
-nicer/6050*/log/
-nicer/6050*/xti/
-nicer/6050390227_timing_exercise/
-201_64_bins_1024_points.fes
-nicer/*.mod
-nicer/*.cdm
-nicer/*.tar
-nicer/*.fes
-nicer/.ipynb_checkpoints/
-nicer/bootstrap_error/6050390204/*.fits
 swift_monitor/*.lc.gz
 swift_monitor/*.flc
 swift_monitor/.ipynb_checkpoints/

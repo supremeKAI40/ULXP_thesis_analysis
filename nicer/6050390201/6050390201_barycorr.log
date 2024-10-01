@@ -1,0 +1,24 @@
+**** Running barycorr v2.17 ****
+barycorr: shell ftcopy infile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night.evt' outfile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtworkfile1858' copyall=YES clobber=YES chatter=0 history=NO
+barycorr: running hdaxbary -i './6050390201/auxil/ni6050390201.orb.gz' -f './6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtbarytime1858' -jpleph 430 -ra 40.91876 -dec 61.43224 -ref ICRS
+barycorr: shell hdaxbary -i './6050390201/auxil/ni6050390201.orb.gz' -f './6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtbarytime1858' -jpleph 430 -ra 40.91876 -dec 61.43224 -ref ICRS 2>&1
+===> No barycenter correction applied to HDU 0
+     TIMESYS is 
+hdaxbary: Warning - error reading TSTART/TSTOP in HDU 4
+<=== Finished after 11 HDUs
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+hdaxbary: Using JPL Planetary Ephemeris DE-430
+barycorr: exited with status 0
+barycorr: shell ftpaste infile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtworkfile1858' pastefile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtbarytime1858[col BARYTIME=TIME-#TIMEZERO;#TTYPE#(Barycenter-corrected time) = "BARYTIME";]' outfile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtpaste1858' copyall=YES clobber=YES
+barycorr: shell ftchecksum infile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtworkfile1858' update=yes datasum=YES chatter=0
+barycorr: shell ftcopy infile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evtworkfile1858' outfile='./6050390201/xti/event_cl/ni6050390201_0mpu7_cl_night_barycorr.evt' copyall=YES clobber=YES chatter=0 history=NO
+barycorr: barycorr successfully completed
+

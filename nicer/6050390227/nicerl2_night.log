@@ -1,0 +1,141 @@
+nicerl2 1.33
+--------------------------------------------------------
+         Requested task operations: MKF,SCREEN,CALMERGE
+       Processed prefilter_columns: NICERV5,-MPU_OVER_COUNT,-MPU_UNDER_COUNT,-MPU_XRAY_COUNT,-MPU_ALL_COUNT
+   Processed niprefilter2_coltypes: BASE,NICERV5
+          Processed geomag_columns: kp_potsdam.fits(KP),solarphi_oulu.fits(SOLAR_PHI),COR_NYM
+  Inputs:
+  (INDIR) 6050390227
+  (UF)    6050390227/xti/event_uf
+  (CL)    6050390227/xti/event_cl
+  (MKF)   6050390227/auxil/ni6050390227.mkf
+
+                        MPU List: 0-6
+                          OBS_ID: 6050390227
+                          OBJECT: Swift_J0243.6+6124
+                        Position: RA    40.9186  Dec    61.4323 [deg] OBJECT
+                                  RA    40.9188  Dec    61.4323 [deg] NOMINAL
+                                  RA        OBJ  Dec        OBJ [deg] REQUESTED
+
+  CALDBVER = xti20240206
+  SOFTVER  = Hea_19Apr2024_V6.33.2_NICER_2024-02-09_V012A
+
+========== Running nicercal ==========
+nicercal 1.12
+  MPU List: 0-6
+  MPU0 ni6050390227_0mpu0_ufa.evt
+  MPU1 ni6050390227_0mpu1_ufa.evt
+  MPU2 ni6050390227_0mpu2_ufa.evt
+  MPU3 ni6050390227_0mpu3_ufa.evt
+  MPU4 ni6050390227_0mpu4_ufa.evt
+  MPU5 ni6050390227_0mpu5_ufa.evt
+  MPU6 ni6050390227_0mpu6_ufa.evt
+nimpumerge 1.7
+  Master sort -> 6050390227/xti/event_cl/ni6050390227_0mpu7_ufa.evt
+  Append MPU GTIs
+nifpmsel 1.9
+  FPM List: launch
+  Recalculating GTIs
+========== Running niprefilter/niprefilter2 ==========
+niprefilter 2.11
+  Running prefilter
+========== Running niprefilter2 ==========
+niprefilter2 2.10
+  Searching geomagnetic quantities
+      (geomagnetic data from /home/supremekai/heasoft/heasoft-6.33.2/attitude/lib/geomag)
+  Creating output file
+  MPU HK files
+  MPU0     (HK)     (Event) 
+  MPU1     (HK)     (Event) 
+  MPU2     (HK)     (Event) 
+  MPU3     (HK)     (Event) 
+  MPU4     (HK)     (Event) 
+  MPU5     (HK)     (Event) 
+  MPU6     (HK)     (Event) 
+  Event files
+  Filter-level calculations
+  Filter-level interpolations
+    File: kp_potsdam.fits    Column: KP
+    File: solarphi_oulu.fits    Column: SOLAR_PHI
+  Adding COR_NYM 
+  Adding DELTA_SLOW_LLD 
+  Adding XTI_PNT_JITTER 
+  Adding ANG_DIST_{X,Y} (target offset) 
+  Appending original extension
+  Filter file: 6050390227/auxil/ni6050390227.mkf
+========== Running nimaketime ==========
+nimaketime 1.13
+        Tracking?: REQUIRED
+        On Target: < 54 [arcsec]
+        Elevation: < 15 [deg]
+     Bright Earth: < 30 [deg]
+   Number of FPMs: > 7
+Star tracker good: REQUIRED
+  TOT_LOWMEM_FIFO: SKIP
+   DELTA_SLOW_LLD: -3.0-3.0
+        NICER_SAA: SCREEN OUT
+              SAA: SKIP
+          COR_SAX: *-*
+  UNDERONLY Range: 0-500
+   OVERONLY Range: *-30
+   Running maketime
+
+                 Summary of Temporal Filtering
+       Successive Filtering Stage     GoodTime #GTI
+   ------------------------------   ---------- ----
+            On-Target + Observing      1936.00    8  
+       LOWMEM + Threshold Quality      1860.00    8  
+                SAA + COR + Orbit      1860.00    8  
+                      Undershoots      1851.00    8  
+                       Overshoots      1851.00    8  
+                     Filtered GTI      1850.00    7  
+========== Running nicermergeclean ==========
+nicermergeclean 1.12
+niautoscreen 1.3
+   FPM exposure check
+   FPM round-robbin check
+   Under(only)shoot check
+   Over(only)shoot check
+   Noise rate check
+   Extended noise peak (0.3-0.7 keV)
+   MPU LOWMEM FIFO data losses
+   Per-MPU shredded GTI check
+       ---------------------------- Pointing GTIs ---------------------------
+       ---------- MET ------------  ------------------UTC--------------------
+   GTI        START -         STOP                START -                STOP
+     1 298463497.00 - 298463752.00  2023-06-17T10:31:35 - 2023-06-17T10:35:50
+     2 298469078.00 - 298469312.00  2023-06-17T12:04:36 - 2023-06-17T12:08:30
+     3 298474639.00 - 298474892.00  2023-06-17T13:37:17 - 2023-06-17T13:41:30
+     4 298480219.00 - 298480472.00  2023-06-17T15:10:17 - 2023-06-17T15:14:30
+     5 298485777.00 - 298486052.00  2023-06-17T16:42:55 - 2023-06-17T16:47:30
+     6 298491359.00 - 298491632.00  2023-06-17T18:15:57 - 2023-06-17T18:20:30
+     7 298496937.00 - 298497192.00  2023-06-17T19:48:55 - 2023-06-17T19:53:10
+
+                       Screened FPM / MPU quicklook table
+                              DET_ID Number                       |  MPU Num.
+        F0       1       2       3       4       5       6        |          
+   GTI  F01234567012345670123456701234567012345670123456701234567 |  M0123456
+     1  F.........O......OXO.............................O..X.... |  MX.X..X.
+     2  F.........O......O.O.............................O..X.... |  M.......
+     3  F.........O......O.O.............................O..X.... |  M.......
+     4  F.........O......O.O.........................X...O..X.... |  MX.X..X.
+     5  F.........O......O.O.............................O..X.... |  M.......
+     6  F.........O......OXO.............................O..X.... |  MX.X..X.
+     7  F.........O......O.O.............................O..X.... |  M.......
+            Footnotes  O=known non-functional; X=screened; '.'=good
+
+   Screening will disable some detectors
+     detlist=MPU0(bti:298459897-298463762|298474892-298480482|298486052-298491642),MPU2(bti:298459897-298463762|298474892-298480482|298486052-298491642),MPU5(bti:298459897-298463762|298474892-298480482|298486052-298491642),-63...
+nicerclean 1.12
+           PI Range: 20 - 1500
+     Trumpet Filter: 1.100000+120.000000/PI+0.000000e+00*PI**4
+              Flags: Under(-) Under(-) Forced(-) NRing(-) Datamode(so+s+f)
+         Expression: (((MPU_UNDER_COUNT<80)||(EVENT_FLAGS==bx0x1x000)))
+  Screening...
+  Updating keywords in output file...
+nifpmsel 1.9
+  FPM List: launch,@6050390227/xti/event_cl/ni6050390227_0mpu7_ufa.evt_detlist.txt
+  Recalculating GTIs
+Event files written
+ UFA: 6050390227/xti/event_cl/ni6050390227_0mpu7_ufa.evt
+  CL: 6050390227/xti/event_cl/ni6050390227_0mpu7_cl_night.evt

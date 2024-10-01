@@ -1,0 +1,12 @@
+./bootstrap_error/6050390204/synthetic_light_curve_1.fits	9.8039
+./bootstrap_error/6050390204/synthetic_light_curve_2.fits	9.804200000000002
+./bootstrap_error/6050390204/synthetic_light_curve_1.fits	9.804
+./bootstrap_error/6050390204/synthetic_light_curve_2.fits	9.8038
+./bootstrap_error/6050390204/synthetic_light_curve_3.fits	9.804
+./bootstrap_error/6050390204/synthetic_light_curve_4.fits	9.8038
+./bootstrap_error/6050390204/synthetic_light_curve_5.fits	9.8038
+./bootstrap_error/6050390204/synthetic_light_curve_6.fits	9.8038
+./bootstrap_error/6050390204/synthetic_light_curve_7.fits	9.8038
+./bootstrap_error/6050390204/synthetic_light_curve_8.fits	9.804
+./bootstrap_error/6050390204/synthetic_light_curve_9.fits	9.804
+./bootstrap_error/6050390204/synthetic_light_curve_10.fits	9.804

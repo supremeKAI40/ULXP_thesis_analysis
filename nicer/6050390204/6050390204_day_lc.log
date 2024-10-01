@@ -1,0 +1,17 @@
+ERROR: could not find CL file in wildcard list 6050390204/xti/event_cl/ni6050390204_0mpu7_cl_day_barycorr.evt at /home/supremekai/heasoft/heasoft-6.33.2/x86_64-pc-linux-gnu-libc2.31/lib/perl/NICER/NicerUtils.pm line 208.
+Task nicerl3-lc 2.0 terminating with status -1
+nicerl3-lc 2.0
+--------------------------------------------------------
+...indir=6050390204...
+...cldir=6050390204/xti/event_cl...
+...obsid=AUTO...
+...normalized obsid=*...
+   (checking MKF pattern 6050390204/xti/event_cl/ni*.mkf)
+   (checking MKF pattern 6050390204/xti/event_cl/ni*.mkf.gz)
+   (checking MKF pattern 6050390204/auxil/ni*.mkf)
+...mkfile=6050390204/auxil/ni6050390204.mkf...
+  (searching for filter files with pattern 6050390204/auxil/ni6050390204.mkf)
+  MKF file candidate 6050390204/auxil/ni6050390204.mkf
+     OBS_ID = 6050390204
+  MKF file candidate 6050390204/auxil/ni6050390204.mkf.gz
+     OBS_ID = 6050390204
