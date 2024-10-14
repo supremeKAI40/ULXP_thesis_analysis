@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # Find all directories that represent obsIDs by looking for subdirectories in the current folder
-obsIDs=$(find . -maxdepth 1 -type d -name "6050[0-9][0-9][0-9][0-9][0-9][0-9]" -print | se
-d 's|^\./||')
+# obsIDs=$(find . -maxdepth 1 -type d -name "6050[0-9][0-9][0-9][0-9][0-9][0-9]" -print | se
+# d 's|^\./||')
+
+# # List of obsIDs (directories containing light curves)
+obsIDs=("6050390227")  # You can dynamically update or generate this list
 
 # Check if any obsIDs were found
 if [ -z "$obsIDs" ]; then
@@ -35,7 +38,7 @@ do
     rm -f "bootstrap.lc"
 
     # Loop to generate 200 light curves with varying rate and calculate period
-    for ((i=1; i<=200; i++ ))
+    for ((i=1; i<=1000; i++ ))
     do
         # Generate a bootstrap light curve by adding random noise to the rate within the error range
         fcalc "$input_lc" bootstrap.lc RATE "RATE+(2.0*random()-1)*ERROR"
@@ -47,7 +50,7 @@ do
         fi
 
         # Prepare input file for epoch folding search (efsearch)
-        printf "bootstrap.lc\n-\nINDEF\n9.79\n64\nINDEF\n1e-6\n1024\n \nyes\n/null\nwe test_efs\nstat\nq" > efsearch_inp
+        printf "bootstrap.lc\n-\nINDEF\n9.80\n64\nINDEF\n1e-5\n1024\n \nyes\n/null\nwe test_efs\nstat\nq" > efsearch_inp
 
         efsearch < efsearch_inp > test1.log
 
