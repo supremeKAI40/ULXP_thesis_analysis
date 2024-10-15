@@ -18,7 +18,7 @@ Scripts used for NICER analysis, all scripts save a log file inside individual o
 | `run_nicerl3_lc_day.sh`     | Run `nicerl3-lc` task to generate light curve with desired binning (Day) |
 | `run_nicerl3_lc_night.sh`   | Run `nicerl3-lc` task to generate light curve with desired binning (Night) |
 | `run_nicerl3_lc_night_binned.sh` | Run `nicerl3-lc`  on observation for different energy bins|
-| `trial_bootstrap_period.sh` | Run `efsearch` on observation for 1000 times depending on the input obs folder array|
+| `bootstrap_period.sh` | Run `efsearch` on observation for 1000 times depending on the input obs folder array taken by scanning for 10-digit obsID|
 
 
 Notebooks Used in the Analysis
