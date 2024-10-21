@@ -1,9 +1,9 @@
 nicerl2 1.36
 --------------------------------------------------------
          Requested task operations: SCREEN,CALMERGE,MKF
-       Processed prefilter_columns: NICERV5,-MPU_OVER_COUNT,-MPU_UNDER_COUNT,-MPU_ALL_COUNT,-MPU_XRAY_COUNT
-   Processed niprefilter2_coltypes: NICERV5,BASE
-          Processed geomag_columns: kp_potsdam.fits(KP),solarphi_oulu.fits(SOLAR_PHI),COR_NYM
+       Processed prefilter_columns: NICERV5,-MPU_ALL_COUNT,-MPU_UNDER_COUNT,-MPU_XRAY_COUNT,-MPU_OVER_COUNT
+   Processed niprefilter2_coltypes: BASE,NICERV5
+          Processed geomag_columns: solarphi_oulu.fits(SOLAR_PHI),kp_potsdam.fits(KP),COR_NYM
   Inputs:
   (INDIR) all_burst_data/6050390243
   (UF)    all_burst_data/6050390243/xti/event_uf
@@ -55,8 +55,8 @@ niprefilter2 2.10
   Event files
   Filter-level calculations
   Filter-level interpolations
-    File: kp_potsdam.fits    Column: KP
     File: solarphi_oulu.fits    Column: SOLAR_PHI
+    File: kp_potsdam.fits    Column: KP
   Adding COR_NYM 
   Adding DELTA_SLOW_LLD 
   Adding XTI_PNT_JITTER 
@@ -130,4 +130,4 @@ nifpmsel 1.9
   Recalculating GTIs
 Event files written
  UFA: output/6050390243/ni6050390243_0mpu7_ufa.evt
-  CL: output/6050390243/ni6050390243_0mpu7_cl_day.evt
+  CL: output/6050390243/ni6050390243_0mpu7_cl_night.evt

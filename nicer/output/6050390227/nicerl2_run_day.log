@@ -1,7 +1,7 @@
 nicerl2 1.36
 --------------------------------------------------------
-         Requested task operations: MKF,CALMERGE,SCREEN
-       Processed prefilter_columns: NICERV5,-MPU_UNDER_COUNT,-MPU_OVER_COUNT,-MPU_ALL_COUNT,-MPU_XRAY_COUNT
+         Requested task operations: MKF,SCREEN,CALMERGE
+       Processed prefilter_columns: NICERV5,-MPU_XRAY_COUNT,-MPU_OVER_COUNT,-MPU_ALL_COUNT,-MPU_UNDER_COUNT
    Processed niprefilter2_coltypes: BASE,NICERV5
           Processed geomag_columns: COR_NYM,kp_potsdam.fits(KP),solarphi_oulu.fits(SOLAR_PHI)
   Inputs:
@@ -138,4 +138,4 @@ nifpmsel 1.9
   Recalculating GTIs
 Event files written
  UFA: output/6050390227/ni6050390227_0mpu7_ufa.evt
-  CL: output/6050390227/ni6050390227_0mpu7_cl_day.evt
+  CL: output/6050390227/ni6050390227_0mpu7_cl_night.evt

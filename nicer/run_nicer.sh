@@ -15,5 +15,5 @@ for obsid_base in all_burst_data/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0
 
   nicerl2 indir="$obsid_base" clobber=YES \
      cldir="$output_dir" clfile="$output_dir/ni${obsid}_0mpu7_cl_night.evt" \
-     mkfile="$output_dir/ni${obsid}.mkf" | tee "$output_dir/nicerl2_run_night.log" &
+     mkfile="$output_dir/ni${obsid}.mkf" | tee "$output_dir/nicerl2_run_night.log"
 done
