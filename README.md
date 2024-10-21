@@ -9,7 +9,8 @@ lcfile.txt contains the path of all the lightcurves generated for each ObsID. It
 Scripts used for NICER analysis, all scripts save a log file inside individual observation folders.
 | Script Name                 | Description                                                     |
 |-----------------------------|-----------------------------------------------------------------|
-| `download_files.sh`          | Downloading observation batch                                  |
+| `nicer_data_download_commands.sh` | All 76 observations with exposure in heasarc >100s between the period of xx201 observation and xx284 observation|
+| `download_files.sh`          | Downloading observation small batch                                  |
 | `lc_efold.sh`               | Epoch folding with manual input of known period                 |
 | `lc_file_combine.sh`        | Script to gather paths of all light curves inside observation folders |
 | `run_barrycorr_day.sh`      | Run barycenter correction on cleaned event files (Day)          |
@@ -28,3 +29,4 @@ Notebooks Used in the Analysis
 | `nb_bootstrap_reportin.ipynb`               | Plotting variation of period with iteration using best fit period texts generated from previous script                 |
 | `nb_folding_pulse_fraction.ipynb`        | Epoch folding using python and RMS Pulsed fraction computation|
 | `nb_rms_phase_resolved_deviation.ipynb`        | Computing RMS deviation in each phase. Contains own implementation and Aru implementation. Outputs png to `rms_calc` folder |
+| `download_utility.py`        | Altered and collected the batches of wget script to add flags necessary to track progress of download |
