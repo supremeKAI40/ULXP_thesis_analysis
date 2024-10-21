@@ -9,4 +9,5 @@
 *.fes
 .ipynb_checkpoints/
 bootstrap_error/6050390204/*.fits
-all_burst_data/
+all_burst_data/6050*
+output/6050*/*_ufa.evt

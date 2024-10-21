@@ -1,0 +1,25 @@
+nicerl2 1.36
+--------------------------------------------------------
+         Requested task operations: MKF,SCREEN,CALMERGE
+       Processed prefilter_columns: NICERV5,-MPU_ALL_COUNT,-MPU_OVER_COUNT,-MPU_UNDER_COUNT,-MPU_XRAY_COUNT
+   Processed niprefilter2_coltypes: BASE,NICERV5
+          Processed geomag_columns: solarphi_oulu.fits(SOLAR_PHI),kp_potsdam.fits(KP),COR_NYM
+  Inputs:
+  (INDIR) all_burst_data/6050390252
+  (UF)    all_burst_data/6050390252/xti/event_uf
+  (CL)    output/6050390252
+  (MKF)   output/6050390252/ni6050390252.mkf
+
+                        MPU List: 0-6
+                          OBS_ID: 6050390252
+                          OBJECT: Swift_J0243.6+6124
+                        Position: RA    40.9186  Dec    61.4323 [deg] OBJECT
+                                  RA    40.9178  Dec    61.4314 [deg] NOMINAL
+                                  RA        OBJ  Dec        OBJ [deg] REQUESTED
+
+  CALDBVER = xti20240206
+  SOFTVER  = Hea_21Aug2024_V6.34_NICER_2024-08-18_V013
+
+========== Running nicercal ==========
+nicercal 1.12
+  MPU List: 0-6

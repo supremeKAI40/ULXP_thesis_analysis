@@ -1,15 +1,19 @@
 #!/bin/bash
-## Trial script to do nicerl2 run
-mkdir -p  output
-$output output
-for obsid in [0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
-  mkdir -p $output/$obsid/
-  if [ ! -f $output/$obsid/ni${obsid}.mkf ]; then
-      rm -f $output/$obsid/ni${obsid}.mkf*
-      cp -p $obsid/auxil/ni${obsid}.mkf* $output/$obsid/
+
+mkdir -p output
+for obsid_base in all_burst_data/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
+  obsid=$(basename "$obsid_base") 
+
+  output_dir="output/$obsid"             # Define the output directory
+
+  mkdir -p "$output_dir"
+  if [ ! -f "$output_dir/ni${obsid}.mkf" ]; then
+      rm -f $output_dir/ni${obsid}.mkf*
+      cp -p $obsid_base/auxil/ni${obsid}.mkf* $output_dir/
+      gunzip -f -d $output_dir/ni${obsid}.mkf.gz
   fi
 
-  nicerl2 indir=$obsid clobber=YES \
-     cldir=$output/$obsid  clfile='$CLDIR/ni$OBSID_0mpu7_cl_night.evt'\
-     mkfile='$CLDIR/ni$OBSID.mkf' 
+  nicerl2 indir="$obsid_base" clobber=YES \
+     cldir="$output_dir" clfile="$output_dir/ni${obsid}_0mpu7_cl_night.evt" \
+     mkfile="$output_dir/ni${obsid}.mkf" | tee "$output_dir/nicerl2_run.log" &
 done
