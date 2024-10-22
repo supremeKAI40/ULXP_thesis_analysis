@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p output
-for obsid_base in all_burst_data/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
+for obsid_base in all_burst_data/batch_7/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
   obsid=$(basename "$obsid_base") 
 
   output_dir="output/$obsid"             # Define the output directory
@@ -14,6 +14,6 @@ for obsid_base in all_burst_data/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0
   fi
 
   nicerl2 indir="$obsid_base" clobber=YES \
-     cldir="$output_dir" clfile="$output_dir/ni${obsid}_0mpu7_cl_night.evt" threshfilter=DAY\
+     cldir="$output_dir" clfile="$output_dir/ni${obsid}_0mpu7_cl_day.evt" threshfilter=DAY task=SCREEN\
      mkfile="$output_dir/ni${obsid}.mkf" | tee "$output_dir/nicerl2_run_day.log"
 done

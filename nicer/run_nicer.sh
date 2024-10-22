@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p output
-for obsid_base in all_burst_data/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
+for obsid_base in all_burst_data/batch_7/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]; do
   obsid=$(basename "$obsid_base") 
 
   output_dir="output/$obsid"             # Define the output directory
