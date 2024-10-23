@@ -68,7 +68,7 @@
 consolidated_file="all_lc_periods_chisq.txt"
 
 # Create or clear the consolidated file
-echo -e "LC_File_Path\tPeriod\tChi-square" > "$consolidated_file"
+echo -e "LC_File_Path\tPeriod\tChi-square\tDate" > "$consolidated_file"
 
 # Loop over all obsIDs in the "output" directory
 obsid_folders=$(find ./reduced_output -maxdepth 1 -type d -name "6050*")
@@ -79,7 +79,7 @@ for obsid_folder in $obsid_folders; do
     echo "Processing obsID: $obsid"
 
     # Define the light curve file path (adjust the pattern as necessary)
-    lc_files=$(find "$obsid_folder" -name "*.lc")
+    lc_files=$(find "$obsid_folder" -name "*night.lc")
 
     # Check if any light curve files were found
     if [[ -z "$lc_files" ]]; then
@@ -108,12 +108,13 @@ for obsid_folder in $obsid_folders; do
             best_period=$(grep "Period :" "$log_file" | awk '{print $3}')
             # Extract the chi-square value from the log file (after 'Chisq')
             chi_square=$(grep "Chisq " "$log_file" | awk '{print $5}' | sed 's/^[ \t]*//;s/[ \t]*$//')
-
+            # Extract the Date
+            date=$(grep "Start Time " "$log_file" | awk '{print $8}')
             # Check if both values are non-empty
             if [[ -n "$best_period" && -n "$chi_square" ]]; then
                 # Append the results to the consolidated file
 
-                echo -e "$lc_basename\t$best_period\t$chi_square" >> "$consolidated_file"
+                echo -e "$obsid\t$best_period\t$chi_square\t$date" >> "$consolidated_file"
                 echo "Saved period and chi-square to consolidated file: $consolidated_file"
             else
                 echo "Warning: Best period or chi-square is empty for $lc_basename"

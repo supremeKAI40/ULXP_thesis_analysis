@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Find all directories that represent obsIDs by looking for subdirectories in the current folder
-# obsIDs=$(find . -maxdepth 1 -type d -name "6050[0-9][0-9][0-9][0-9][0-9][0-9]" -print | se
-# d 's|^\./||')
+#Find all directories that represent obsIDs by looking for subdirectories in the current folder
+obsIDs=$(find . -maxdepth 1 -type d -name "6050[0-9][0-9][0-9][0-9][0-9][0-9]" -print | se
+d 's|^\./||')
 
-# # List of obsIDs (directories containing light curves)
-obsIDs=("6050390201")  # You can dynamically update or generate this list
+# # # List of obsIDs (directories containing light curves)
+# obsIDs=("6050390201")  # You can dynamically update or generate this list
 
 # Check if any obsIDs were found
 if [ -z "$obsIDs" ]; then

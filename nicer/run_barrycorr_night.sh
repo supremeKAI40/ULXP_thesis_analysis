@@ -15,9 +15,9 @@
 # done
 
 
-for batch in {0..7}; do
+
     # Find all obsid folders inside the batch folder
-    batch_folder="all_burst_data/batch_${batch}"
+    batch_folder="/home/supremekai/thesis/J0243_6p6124/nicer/reduced_output"
     obsid_folders=$(find "$batch_folder" -maxdepth 1 -type d -name "6050*")
     
     # Loop through each obsid folder
@@ -39,7 +39,7 @@ for batch in {0..7}; do
             barycorr infile="$infile" \
                      outfile="$outfile" \
                      orbitfile="$orbitfile" \
-                     barytime=No clobber=yes \
+                     barytime=yes clobber=yes \
                      #refframe=ICRS ephem=JPLEPH.430 \
                      2>&1 | tee "$log_file"
 
@@ -57,7 +57,7 @@ for batch in {0..7}; do
                 barycorr infile="$modified_infile" \
                          outfile="$outfile" \
                          orbitfile="$orbitfile" \
-                         barytime=no clobber=yes refframe=ICRS ephem=JPLEPH.430 \
+                         barytime=yes clobber=yes refframe=ICRS ephem=JPLEPH.430 \
                          2>&1 | tee -a "$log_file"  # Append to the log file
                 
                 echo "Barycorr completed after fix for $obsid (Batch: $batch)"
@@ -68,4 +68,4 @@ for batch in {0..7}; do
             echo "Missing necessary files for $obsid in batch_$batch. Skipping..."
         fi
     done
-done
+
