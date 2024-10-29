@@ -1,6 +1,0 @@
-nicerl2 1.36
---------------------------------------------------------
-         Requested task operations: SCREEN,CALMERGE,MKF
-       Processed prefilter_columns: NICERV5,-MPU_UNDER_COUNT,-MPU_XRAY_COUNT,-MPU_OVER_COUNT,-MPU_ALL_COUNT
-   Processed niprefilter2_coltypes: NICERV5,BASE
-          Processed geomag_columns: COR_NYM,solarphi_oulu.fits(SOLAR_PHI),kp_potsdam.fits(KP)
