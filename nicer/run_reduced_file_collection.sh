@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Define the input and output base directories
-input_base="output"
+input_base="."
 output_base="reduced_output"
+auxil_base="."
 
 # Find all obsid directories inside the input_base
 obsid_folders=$(find "$input_base" -maxdepth 1 -type d -name "6050*")
@@ -25,6 +26,14 @@ for obsid_folder in $obsid_folders; do
     
     # Copy everything except *_ufa.evt files from the obsid folder
     find "$obsid_folder" -type f ! -name "*_ufa.evt" -exec cp {} "$reduced_obsid_folder/" \;
-    
     echo "Copied files for $obsid (excluding *_ufa.evt) to $reduced_obsid_folder"
+    
+    # Look for the ni{obsid}.orb.gz file in ./batch_0/{obsId}/auxil/ and copy it
+    orb_file="${auxil_base}/${obsid}/auxil/ni${obsid}.orb.gz"
+    if [[ -f "$orb_file" ]]; then
+        cp "$orb_file" "$reduced_obsid_folder/"
+        echo "Copied $orb_file to $reduced_obsid_folder"
+    else
+        echo "Warning: Orbital file $orb_file not found"
+    fi
 done

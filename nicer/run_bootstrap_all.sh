@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the input file containing the obsID, period, and chi-square values
-input_file="all_lc_periods_chisq.txt"  # Replace with your actual file name
-base_output="./bootstrap_error_all"
+input_file="experimenting_orbital_correction/all_lc_periods_chisq.txt"  # Replace with your actual file name
+base_output="./bootstrap_error"
 
 # Check if the input file exists
 if [[ ! -f "$input_file" ]]; then
@@ -28,8 +28,8 @@ while IFS=$'\t' read -r LC_File_Path Period ChiSquare Date; do
     echo "Processing obsID: $obsID with Period: $Period"
 
     # Define input and output directories based on obsID
-    input_dir="./reduced_output/$obsID/"
-    input_lc="$input_dir/ni${obsID}_cl_night_barycorrmpu7_sr_night.lc"  # Assumes LC_File_Path contains the full file name
+    input_dir="./experimenting_orbital_correction/$obsID/xti/event_cl"
+    input_lc="$input_dir/ni${obsID}_0mpu7_cl_night_barycorr_orbit.evt"  # Assumes LC_File_Path contains the full file name
     output_dir="$base_output/$obsID"
 
     # Check if the input directory exists

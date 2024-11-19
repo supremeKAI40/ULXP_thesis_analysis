@@ -25,22 +25,24 @@
         obsid=$(basename "$obsid_folder")
         
         # Define paths for input/output event files and orbit file
-        infile="reduced_output/${obsid}/ni${obsid}_0mpu7_cl_day.evt"
-        outfile="reduced_output/${obsid}/ni${obsid}_0mpu7_cl_day_barycorr.evt"
-        orbitfile="${obsid_folder}/auxil/ni${obsid}.orb.gz"
-        log_file="reduced_output/${obsid}/${obsid}_barycorr_day.log"
-        modified_infile="reduced_output/${obsid}/ni${obsid}_0mpu7_cl_day_nofpmsel.evt"
+        infile="reduced_output/${obsid}/ni${obsid}_0mpu7_cl_night.evt"
+        #infile="${obsid_folder}/${obsid}/ni${obsid}_cl_nightmpu7_sr.lc"
+        outfile="reduced_output/${obsid}/ni${obsid}_0mpu7_cl_night_barycorr_barytimeNo.evt"
+        #outfile="${obsid_folder}/${obsid}/ni${obsid}_cl_nightmpu7_sr_barycorr_on_lc.lc"
+        orbitfile="${obsid_folder}/ni${obsid}.orb.gz"
+        log_file="${obsid_folder}/${obsid}/${obsid}_barycorr_night_barytimeNo.log"
+        modified_infile="${obsid_folder}/${obsid}/ni${obsid}_0mpu7_cl_night_nofpmsel.evt"
 
         # Check if necessary files exist before processing
         if [[ -f "$infile" && -f "$orbitfile" ]]; then
             echo "Processing folder: $obsid (Batch: $batch)"
-            
             # Run the barycorr command
             barycorr infile="$infile" \
                      outfile="$outfile" \
                      orbitfile="$orbitfile" \
-                     barytime=yes clobber=yes \
-                     #refframe=ICRS ephem=JPLEPH.430 \
+                     barytime=no clobber=yes \
+                     #barytime=Yes clobber=yes \
+                     refframe=ICRS ephem=JPLEPH.430 \
                      2>&1 | tee "$log_file"
 
             # Check for "no bracketing sample" error in the log file
@@ -57,7 +59,7 @@
                 barycorr infile="$modified_infile" \
                          outfile="$outfile" \
                          orbitfile="$orbitfile" \
-                         barytime=yes clobber=yes refframe=ICRS ephem=JPLEPH.430 \
+                         barytime=no clobber=yes refframe=ICRS ephem=JPLEPH.430 \
                          2>&1 | tee -a "$log_file"  # Append to the log file
                 
                 echo "Barycorr completed after fix for $obsid (Batch: $batch)"
@@ -66,6 +68,8 @@
             fi
         else
             echo "Missing necessary files for $obsid in batch_$batch. Skipping..."
+            echo $orbitfile
+            echo $infile
         fi
     done
 

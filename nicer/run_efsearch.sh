@@ -65,13 +65,13 @@
 #!/bin/bash
 
 # File to store the consolidated results for all light curves
-consolidated_file="all_lc_periods_chisq.txt"
+consolidated_file="experiment_orbital/all_lc_periods_chisq_sh.txt"
 
 # Create or clear the consolidated file
 echo -e "LC_File_Path\tPeriod\tChi-square\tDate" > "$consolidated_file"
 
 # Loop over all obsIDs in the "output" directory
-obsid_folders=$(find ./reduced_output -maxdepth 1 -type d -name "6050*")
+obsid_folders=$(find ./experiment_orbital -maxdepth 1 -type d -name "6050*")
 
 # Loop through each obsid folder
 for obsid_folder in $obsid_folders; do
@@ -79,7 +79,7 @@ for obsid_folder in $obsid_folders; do
     echo "Processing obsID: $obsid"
 
     # Define the light curve file path (adjust the pattern as necessary)
-    lc_files=$(find "$obsid_folder" -name "*night.lc")
+    lc_files=$(find "$obsid_folder" -name "*barycorr_orbit.evt")
 
     # Check if any light curve files were found
     if [[ -z "$lc_files" ]]; then
@@ -98,7 +98,7 @@ for obsid_folder in $obsid_folders; do
         log_file="$lc_folder/${lc_basename}_efsearch.log"
 
         # Run efsearch on the light curve file
-        printf "$lc_file\n-\nINDEF\n9.81\n64\nINDEF\n1e-5\n1024\n \nyes \n/null\nwe $fes_file\nstat\nq" > efsearch_inp
+        printf "$lc_file\n-\nINDEF\n9.8\n64\nINDEF\n1e-4\n1024\n \nyes \n/null\nwe $fes_file\nstat\nq" > efsearch_inp
         efsearch < efsearch_inp > $log_file
         # Check if efsearch produced the .fes file
         if [[ -f "$fes_file" ]]; then
