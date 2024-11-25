@@ -25,6 +25,7 @@ Scripts used for NICER analysis, all scripts save a log file inside individual o
 Notebooks Used in the Analysis
 | Notebook Name                 | Description                                                     |
 |-----------------------------|-----------------------------------------------------------------|
+| `nb_adding_orbittime_column_evt.ipynb`               | Adding Orbittime column to the base event file which contans uncorrected TIME, BARYTIME and ORBITTIME columns       |
 | `nb_orbital_correction.ipynb`               | Calculating kepler's solution using Mikkola's approximation. Outputs `_corrected.evt`       |
 | `nb_orbital_correction_final.ipynb`               | Calculating kepler's solution using Mikkola's approximation taken from old code of Tubingen. Outputs `_orbit_piexpiex.evt`       |
 | `nb_bootstrap_error.ipynb`          | Predicting period using bootstrap method. Outputs best fit period and max chi-sq as text file inside `bootstrap_error` folder with respected obsID folder dynamically created.                               |
