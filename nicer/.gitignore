@@ -11,3 +11,4 @@
 bootstrap_error/6050390204/*.fits
 all_burst_data/6050*
 reduced_output/
+*.npz
