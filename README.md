@@ -25,9 +25,10 @@ Scripts used for NICER analysis, all scripts save a log file inside individual o
 Notebooks Used in the Analysis
 | Notebook Name                 | Description                                                     |
 |-----------------------------|-----------------------------------------------------------------|
+| `nb_phase_resolved_setup.ipynb`               | Adding phase column based on spin period and known epoch from orbittime column. Hints from Phase resolved spectrum thread on barycenter corrected files of NICER page. Outputs `****/night_barycorr_orbit_piexpiex_yes_phase_added.evt` named event files which can be plotted as histogram to ideally reveal pulse peaks       |
 | `nb_adding_orbittime_column_evt.ipynb`               | Adding Orbittime column to the base event file which contans uncorrected TIME, BARYTIME and ORBITTIME columns       |
 | `nb_orbital_correction.ipynb`               | Calculating kepler's solution using Mikkola's approximation. Outputs `_corrected.evt`       |
-| `nb_orbital_correction_final.ipynb`               | Calculating kepler's solution using Mikkola's approximation taken from old code of Tubingen. Outputs `_orbit_piexpiex.evt`       |
+| `nb_orbital_correction_final.ipynb`               | Calculating kepler's solution using Mikkola's approximation taken from old code of Tubingen. Outputs `_orbit_piexpiex.evt`. Used for further analysis     |
 | `nb_bootstrap_error.ipynb`          | Predicting period using bootstrap method. Outputs best fit period and max chi-sq as text file inside `bootstrap_error` folder with respected obsID folder dynamically created.                               |
 | `nb_bootstrap_reportin.ipynb`               | Plotting variation of period with iteration using best fit period texts generated from previous script                 |
 | `nb_folding_pulse_fraction.ipynb`        | Epoch folding using python and RMS Pulsed fraction computation|
