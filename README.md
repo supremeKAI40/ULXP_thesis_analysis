@@ -35,3 +35,4 @@ Notebooks Used in the Analysis
 | `nb_rms_phase_resolved_deviation.ipynb`        | Computing RMS deviation in each phase. Contains own implementation and Aru implementation. Outputs png to `rms_calc` folder |
 | `download_utility.py`        | Altered and collected the batches of wget script to add flags necessary to track progress of download |
 | `nb_period_reporting.py`        | Routine to plot period vs MJD or TJD |
+| `nb_report_spectrum.ipynb`        | Average NICER spectrum and its evolution |
