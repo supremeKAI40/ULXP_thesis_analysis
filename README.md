@@ -20,6 +20,8 @@ Scripts used for NICER analysis, all scripts save a log file inside individual o
 | `run_nicerl3_lc_night.sh`   | Run `nicerl3-lc` task to generate light curve with desired binning (Night) |
 | `run_nicerl3_lc_night_binned.sh` | Run `nicerl3-lc`  on observation for different energy bins|
 | `bootstrap_period.sh` | Run `efsearch` on observation for 1000 times depending on the input obs folder array taken by scanning for 10-digit obsID|
+|`run_flux_calculation.sh`|Running the script uses xcm file `saved_spec_files.txt` which is just names of all .xcm files for which one required the flux, it saves all output in `flux_results.txt` file in the same location. Has to be run from the location where .xcm file can be openned. |
+| `run_nicerl3_spect.sh`     | Run `nicerl3-spect` task to generate spectra from reduced event files after orbital correction. It does not matter for spectra so using original event file gives same result.|
 
 
 Notebooks Used in the Analysis
@@ -35,4 +37,4 @@ Notebooks Used in the Analysis
 | `nb_rms_phase_resolved_deviation.ipynb`        | Computing RMS deviation in each phase. Contains own implementation and Aru implementation. Outputs png to `rms_calc` folder |
 | `download_utility.py`        | Altered and collected the batches of wget script to add flags necessary to track progress of download |
 | `nb_period_reporting.py`        | Routine to plot period vs MJD or TJD |
-| `nb_report_spectrum.ipynb`        | Average NICER spectrum and its evolution |
+| `nb_report_spectrum.ipynb`        | Average NICER spectrum and its evolution with MJD and Lum, uses a csv file created from excel records of spectrum |
