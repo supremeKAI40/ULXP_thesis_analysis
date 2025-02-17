@@ -70,7 +70,7 @@ process_exposure() {
     local ehk_file="$exposure/AUX/HXMT_${obs_id}_EHK_FFFFFF_V1_L1P.FITS"
     local att_file="$exposure/ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
 
-    # Step 1: Run mepical if necessary
+    Step 1: Run mepical if necessary
     if file_exists "$evt_file" && file_exists "$temp_file"; then
         run_command "mepical evtfile=$evt_file tempfile=$temp_file outfile=$pi_file clobber=YES seed=42" "$log_file"
     fi
@@ -106,13 +106,13 @@ process_exposure() {
     fi
 
     # Step 7.5: Collect .pha files and store in specname.txt
-    spec_file="$output_dir/specname.txt"
+    spec_file="$output_dir/me_specname.txt"
     find "$output_dir" -name "${exposure_id}_me_*.pha" > "$spec_file"
     echo "Stored all .pha files in $spec_file"
 
     # Step 8: Run mebkgmap if necessary
     if file_exists "$screen_file" && file_exists "$gti_file" && file_exists "$dead_file"; then
-        run_command "mebkgmap spec $screen_file $ehk_file $gti_file $dead_file $temp_file $output_dir/specname.txt 0 1023 me_specbkg $new_status_file" "$log_file"
+        run_command "mebkgmap spec $screen_file $ehk_file $gti_file $dead_file $temp_file $output_dir/me_specname.txt 0 1023 me_specbkg $new_status_file" "$log_file"
     fi
 }
 
