@@ -67,33 +67,33 @@ process_exposure() {
     local resp_file="$output_dir/${exposure_id}_he_resp.fits"
     local bkg_file="$output_dir/${exposure_id}_he_specbkg"
 
-    # Step 1: Run hepical
-    if file_exists "$evt_file"; then
-        run_command "hepical evtfile=$evt_file outfile=$pi_file clobber=YES seed=42" "$log_file"
-    fi
+    # # Step 1: Run hepical
+    # if file_exists "$evt_file"; then
+    #     run_command "hepical evtfile=$evt_file outfile=$pi_file clobber=YES seed=42" "$log_file"
+    # fi
 
-    # Step 2: Run hegtigen
-    if file_exists "$hv_file" && file_exists "$temp_file" && file_exists "$ehk_file"; then
-        run_command "hegtigen hvfile=$hv_file tempfile=$temp_file ehkfile=$ehk_file outfile=$gti_file defaultexpr=NONE expr=\"ELV>10&&COR>8&&SAA_FLAG==0&&ANG_DIST<0.04&&T_SAA>300&&TN_SAA>300\" " "$log_file"
-    fi
+    # # Step 2: Run hegtigen
+    # if file_exists "$hv_file" && file_exists "$temp_file" && file_exists "$ehk_file"; then
+    #     run_command "hegtigen hvfile=$hv_file tempfile=$temp_file ehkfile=$ehk_file outfile=$gti_file defaultexpr=NONE expr=\"ELV>10&&COR>8&&SAA_FLAG==0&&ANG_DIST<0.04&&T_SAA>300&&TN_SAA>300\" " "$log_file"
+    # fi
 
-    # Step 3: Run hescreen
-    if file_exists "$pi_file" && file_exists "$gti_file"; then
-        run_command "hescreen evtfile=$pi_file gtifile=$gti_file outfile=$screen_file userdetid=\"0-17\"" "$log_file"
-    fi
+    # # Step 3: Run hescreen
+    # if file_exists "$pi_file" && file_exists "$gti_file"; then
+    #     run_command "hescreen evtfile=$pi_file gtifile=$gti_file outfile=$screen_file userdetid=\"0-17\"" "$log_file"
+    # fi
 
-    # Step 4: Run hespecgen
-    if file_exists "$screen_file" && file_exists "$dtime_file"; then
-        run_command "hespecgen evtfile=$screen_file deadfile=$dtime_file outfile=$pha_file userdetid=\"0-15,17\"" "$log_file"
-    fi
+    # # Step 4: Run hespecgen
+    # if file_exists "$screen_file" && file_exists "$dtime_file"; then
+    #     run_command "hespecgen evtfile=$screen_file deadfile=$dtime_file outfile=$pha_file userdetid=\"0-15,17\"" "$log_file"
+    # fi
 
-    # Step 5: Run herspgen
-    if file_exists "${pha_file}_g0.pha" && file_exists "$att_file"; then
-        run_command "herspgen phafile=${pha_file}_g0.pha attfile=$att_file outfile=$resp_file ra=-1 dec=-91" "$log_file"
-    fi
+    # # Step 5: Run herspgen
+    # if file_exists "${pha_file}_g0.pha" && file_exists "$att_file"; then
+    #     run_command "herspgen phafile=${pha_file}_g0.pha attfile=$att_file outfile=$resp_file ra=-1 dec=-91" "$log_file"
+    # fi
 
     # Step 5.5: Collect .pha files and store in he_specname.txt
-    local spec_file="$output_dir/he_specname.txt"
+    local spec_file="$output_dir/${$exposure_id}_he_specname.txt"
     find "$output_dir" -name "${exposure_id}_he*.pha" > "$spec_file"
     echo "Stored all .pha files in $spec_file"
 
