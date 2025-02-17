@@ -64,7 +64,7 @@ process_exposure() {
     local gti_file="$output_dir/${exposure_id}_he_gti.fits"
     local screen_file="$output_dir/${exposure_id}_he_screen.fits"
     local pha_file="$output_dir/${exposure_id}_he_pha"
-    local resp_file="$output_dir/${exposure_id}_he_rsp.fits"
+    local resp_file="$output_dir/${exposure_id}_he_resp.fits"
     local bkg_file="$output_dir/${exposure_id}_he_specbkg"
 
     # Step 1: Run hepical
