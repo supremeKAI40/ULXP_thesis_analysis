@@ -62,7 +62,7 @@ process_exposure() {
     local screen_file="$output_dir/${exposure_id}_me_screen.fits"
     local pha_file="$output_dir/${exposure_id}_me_pha"
     local resp_file="$output_dir/${exposure_id}_me_resp.fits"
-    local bkg_file="$output_dir/${exposure_id}_me_bkg.fits"
+    local bkg_file="$output_dir/${exposure_id}_me_specbkg"
 
      # Define paths for input/output files
     local evt_file="$exposure_sub/HXMT_${exposure_id}_ME-Evt_FFFFFF_V1_L1P.FITS"
@@ -70,7 +70,7 @@ process_exposure() {
     local ehk_file="$exposure/AUX/HXMT_${obs_id}_EHK_FFFFFF_V1_L1P.FITS"
     local att_file="$exposure/ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
 
-    Step 1: Run mepical if necessary
+    # Step 1: Run mepical if necessary
     if file_exists "$evt_file" && file_exists "$temp_file"; then
         run_command "mepical evtfile=$evt_file tempfile=$temp_file outfile=$pi_file clobber=YES seed=42" "$log_file"
     fi
@@ -101,8 +101,8 @@ process_exposure() {
     fi
 
     # Step 7: Run merspgen if necessary
-    if file_exists "$pha_file" && file_exists "$att_file"; then
-        run_command "merspgen phafile=$pha_file attfile=$att_file outfile=$resp_file ra=-1 dec=-91" "$log_file"
+    if file_exists "$att_file"; then
+        run_command "merspgen phafile=${pha_file}_g0.pha attfile=$att_file outfile=$resp_file ra=-1 dec=-91" "$log_file"
     fi
 
     # Step 7.5: Collect .pha files and store in specname.txt
@@ -112,7 +112,7 @@ process_exposure() {
 
     # Step 8: Run mebkgmap if necessary
     if file_exists "$screen_file" && file_exists "$gti_file" && file_exists "$dead_file"; then
-        run_command "mebkgmap spec $screen_file $ehk_file $gti_file $dead_file $temp_file $output_dir/me_specname.txt 0 1023 me_specbkg $new_status_file" "$log_file"
+        run_command "mebkgmap spec $screen_file $ehk_file $gti_file $dead_file $temp_file $output_dir/me_specname.txt 0 1023 $bkg_file $new_status_file" "$log_file"
     fi
 }
 
