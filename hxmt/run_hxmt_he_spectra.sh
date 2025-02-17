@@ -41,7 +41,7 @@ process_exposure() {
 
     # Extract OBS_ID and exposure identifier
     local obs_id=$(basename "$exposure" | cut -d'-' -f1)
-    local exposure_id=$(basename "$exposure")
+    local exposure_id=$(basename "$(dirname "$exposure_sub")" | cut -d'-' -f1)
 
     # Name output folder
     local output_dir="$obs_dir/output"
@@ -57,7 +57,7 @@ process_exposure() {
     local hv_file="$exposure_sub/HXMT_${obs_id}_HE-HV_FFFFFF_V1_L1P.FITS"
     local dtime_file="$exposure_sub/HXMT_${obs_id}_HE-DTime_FFFFFF_V1_L1P.FITS"
     local ehk_file="$aux_dir/HXMT_${obs_id}_EHK_FFFFFF_V1_L1P.FITS"
-    local att_file="./ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
+    local att_file="$exposure/ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
     
     # Define output file paths
     local pi_file="$output_dir/${exposure_id}_he_pi.fits"
@@ -94,7 +94,7 @@ process_exposure() {
 
     # Step 5.5: Collect .pha files and store in he_specname.txt
     local spec_file="$output_dir/he_specname.txt"
-    find "$output_dir" -name "${exposure_id}_he_*.pha" > "$spec_file"
+    find "$output_dir" -name "${exposure_id}_he*.pha" > "$spec_file"
     echo "Stored all .pha files in $spec_file"
 
     # Step 6: Run hebkgmap
@@ -134,7 +134,6 @@ main() {
         if [ -d "$proposal" ]; then
             process_proposal "$proposal"
         fi
-        break
     done
 }
 

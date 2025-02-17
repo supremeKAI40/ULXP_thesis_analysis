@@ -56,7 +56,8 @@ process_exposure() {
     local temp_file="$exposure_sub/HXMT_${obs_id}_LE-TH_FFFFFF_V1_L1P.FITS"
     local instatus_file="$exposure_sub/HXMT_${obs_id}_LE-InsStat_FFFFFF_V1_L1P.FITS"
     local ehk_file="$aux_dir/HXMT_${obs_id}_EHK_FFFFFF_V1_L1P.FITS"
-    local att_file="./ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
+    local att_file="$exposure/ACS/HXMT_${obs_id}_Att_FFFFFF_V1_L1P.FITS"
+
     
     # Define output file paths
     local pi_file="$output_dir/${exposure_id}_le_pi.fits"
@@ -69,37 +70,40 @@ process_exposure() {
     local bkg_file="$output_dir/${exposure_id}_le_specbkg"
     
     # Step 1: Run lepical
-    if file_exists "$evt_file" && file_exists "$temp_file"; then
+    if file_exists "$evt_file" && file_exists "$temp_file" && [ ! -f  "$pi_file" ]; then
         run_command "lepical evtfile=$evt_file tempfile=$temp_file outfile=$pi_file clobber=YES" "$log_file"
     fi
 
     # Step 2: Run lerecon
-    if file_exists "$pi_file" && file_exists "$instatus_file"; then
+    if file_exists "$pi_file" && file_exists "$instatus_file" && [ ! -f "$recon_file" ]; then
         run_command "lerecon evtfile=$pi_file instatusfile=$instatus_file outfile=$recon_file" "$log_file"
     fi
 
     # Step 3: Run legtigen
-    if file_exists "$ehk_file" && file_exists "$instatus_file"; then
+    if file_exists "$ehk_file" && file_exists "$instatus_file" && [ ! -f "$gti_file" ]; then
         run_command "legtigen defaultexpr=NONE expr=\"ELV>10&&COR>8&&SAA_FLAG==0&&ANG_DIST<0.04&&T_SAA>300&&TN_SAA>300\" tempfile=$temp_file ehkfile=$ehk_file instatusfile=$instatus_file evtfile=NONE outfile=$gti_file" "$log_file"
     fi
 
     # Step 4: Run legticorr
-    if file_exists "$recon_file" && file_exists "$gti_file"; then
+    if file_exists "$recon_file" && file_exists "$gti_file" && [ ! -f "$gti_corr_file" ]; then
         run_command "legticorr $recon_file $gti_file $gti_corr_file" "$log_file"
     fi
 
     # Step 5: lescreen
-    if file_exists "$recon_file" && file_exists "$gti_corr_file"; then
+    if file_exists "$recon_file" && file_exists "$gti_corr_file" && [ ! -f "$screen_file" ]; then
         run_command "lescreen evtfile=$recon_file gtifile=$gti_corr_file userdetid="0-95" eventtype=1 outfile=$screen_file" "$log_file"
     fi
 
     # Step 6: Run lespecgen
-    if file_exists "$screen_file"; then
+    ## if you ever want to skip pha step:: add this
+    #&& [ -z "$(ls "$output_dir/${exposure_id}_le_pha_"*.pha 2>/dev/null)" ]
+    if file_exists "$screen_file" ; then
         run_command "lespecgen evtfile=$screen_file userdetid=\"0 2-4 6-10 12 14 20 22-26 28-30 32 34-36 38-42 44 46 52 54-58 60-62 64 66-68 70-74 76 78 84 86-90 92-94\" outfile=$pha_file eventtype=1" "$log_file"
     fi
 
     # Step 7: Run lerspgen
-    if file_exists "$pha_file" && file_exists "$att_file"; then
+    #file_exists "$pha_file" && 
+    if file_exists "$att_file" && [ ! -f "$resp_file" ]; then
         run_command "lerspgen phafile=${pha_file}_g0.pha tempfile=$temp_file attfile=$att_file outfile=$resp_file ra=-1 dec=-91" "$log_file"
     fi
 
@@ -145,7 +149,6 @@ main() {
         if [ -d "$proposal" ]; then
             process_proposal "$proposal"
         fi
-        break
     done
 }
 
