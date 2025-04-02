@@ -93,7 +93,7 @@ process_exposure() {
     # fi
 
     # Step 5.5: Collect .pha files and store in he_specname.txt
-    local spec_file="$output_dir/${$exposure_id}_he_specname.txt"
+    local spec_file="$output_dir/${exexposure_id}_he_specname.txt"
     find "$output_dir" -name "${exposure_id}_he*.pha" > "$spec_file"
     echo "Stored all .pha files in $spec_file"
 

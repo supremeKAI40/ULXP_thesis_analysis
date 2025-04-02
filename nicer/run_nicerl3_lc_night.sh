@@ -2,7 +2,7 @@
 ## Automatically detect obsIDs in the output folder and run nicerl3-lc with day settings.
 
 # Define base directory for output
-output_base="experiment_orbital"
+output_base="reduced_output"
 
 # Loop through all obsID folders in the output directory
 for obsid_base in "$output_base"/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9];
@@ -14,7 +14,7 @@ do
     input_dir="$output_base/$obsid"
     
     # Define the barycorr-corrected .evt file as input for nicerl3-lc
-    clfile="$input_dir/xti/event_cl/ni${obsid}_0mpu7_cl_night.evt"
+    clfile="$input_dir/ni${obsid}_0mpu7_cl_night_barycorr_orbit_piexpiex_yes.evt"
     
     # Check if the barycorr-corrected file exists before proceeding
     if [ -f "$clfile" ]; then

@@ -58,7 +58,7 @@ while IFS=$'\t' read -r LC_File_Path Period ChiSquare Date; do
     rm -f "bootstrap.lc"
 
     # Loop to generate 200 light curves with varying rate and calculate period
-    for ((i=1; i<=2; i++)); do
+    for ((i=1; i<=200; i++)); do
         # Generate a bootstrap light curve by adding random noise to the rate within the error range
         fcalc "$input_lc" bootstrap.lc RATE "RATE+(2.0*random(RATE)-1)*ERROR"
 
@@ -110,3 +110,4 @@ while IFS=$'\t' read -r LC_File_Path Period ChiSquare Date; do
 done < "$input_file"
 
 # Cleanup any additional files as needed
+# rm -f ./bootstrap_error/$obsID/periods.dat
