@@ -23,6 +23,9 @@ Scripts used for NICER analysis, all scripts save a log file inside individual o
 |`run_flux_calculation.sh`|Running the script uses xcm file `saved_spec_files.txt` which is just names of all .xcm files for which one required the flux, it saves all output in `flux_results.txt` file in the same location. Has to be run from the location where .xcm file can be openned. |
 | `run_nicerl3_spect.sh`     | Run `nicerl3-spect` task to generate spectra from reduced event files after orbital correction. It does not matter for spectra so using original event file gives same result.|
 | `run_hxmt_he/me/le.sh`     | Run HXMTDAS tasks to generate spectra from L1 files. specgen commands are where spectra generation starts so altering the script to remove further steps would ensure generation of L2 products.|
+| `run_hxmt_bootstrap_error.sh`        | Doing bootstrap for given efsearch initial parameters or can take initial from period calculated using run_efsearch.sh |
+
+
 
 
 Notebooks Used in the Analysis
@@ -39,3 +42,6 @@ Notebooks Used in the Analysis
 | `download_utility.py`        | Altered and collected the batches of wget script to add flags necessary to track progress of download |
 | `nb_period_reporting.py`        | Routine to plot period vs MJD or TJD |
 | `nb_report_spectrum.ipynb`        | Average NICER spectrum and its evolution with MJD and Lum, uses a csv file created from excel records of spectrum |
+| `nb_reporting_efsearch.ipynb`        | Plot frequency variation of HXMT with respect to NICER using final manually created period values |
+| `nb_hxmt_reporting_spectra.ipynb`        | Plot variation of HXMT spectral parameters with respect to NICER using final spectral params csv |
+| `nb_hxmt_reporting_profile_rms.ipynb`        | Plot variation of HXMT timing parameters with with csv |

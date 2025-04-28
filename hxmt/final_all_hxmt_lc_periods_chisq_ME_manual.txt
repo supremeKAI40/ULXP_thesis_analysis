@@ -5,8 +5,10 @@
 LC_File_Path	Period	Chi-square	Date	freq	PErr
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900101_ME_lcnet_10-35keV_0.05s.lc	9.79509	22080	20152	102.0919665	2.25E-05
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900102_ME_lcnet_10-35keV_0.05s.lc	9.79508	16450	20152	102.0920707	3.58E-05
-/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900103_ME_lcnet_10-35keV_0.05s.lc	9.79504	23410	20153	102.0924876	2.93E-05
-/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900104_ME_lcnet_10-35keV_0.05s.lc	9.79504	21280	20153	102.0924876	2.60E-05
+/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900103_ME_lcnet_10-35keV_0.05s.lc	9.79504	23410	20153.04139
+	102.0924876	2.93E-05
+/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900104_ME_lcnet_10-35keV_0.05s.lc	9.79504	21280	60153.22361
+	102.0924876	2.60E-05
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600101_ME_lcnet_10-35keV_0.05s.lc	9.79483	14570	20154	102.0946765	1.37E-05
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600102_ME_lcnet_10-35keV_0.05s.lc	9.7947	8049	20154	102.0960315	7.58E-05
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600103_ME_lcnet_10-35keV_0.05s.lc	9.79481	7948	20154	102.0948849	1.87E-04
