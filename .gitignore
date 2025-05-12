@@ -1,10 +1,9 @@
 swift_monitor/*.lc.gz
 swift_monitor/*.flc
 swift_monitor/.ipynb_checkpoints/
-nustar_Aru/*
+nustar_Aru/
 nicer_testing_energy_bin_pulse/*
 **/*.png
 *.ipynb_checkpoints
 *.ipynb
-hxmt/hxmt_me_l3_products/*
-hxmt/hxmt_me_l3_products/.ipynb_checkpoints
+hxmt/hxmt_me_l3_products/
