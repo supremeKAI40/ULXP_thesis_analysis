@@ -7,10 +7,8 @@
 ##removed 427900201,203,4279102 are dropped because of exposure less than 700 sec and bad through all the instruments					
 LC_File_Path	Period	Chi-square	Date	freq	PErr
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900101_HE_lcnet_27-250keV_0.05s_all.lc	9.7951	67180	20152	102.0918623	9.15E-06
-/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900103_HE_lcnet_27-250keV_0.05s_all.lc	9.79503	47540	20153.04139
-	102.0925919	2.14E-05
-/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900104_HE_lcnet_27-250keV_0.05s_all.lc	9.79501	69780	20153.22361
-	102.0928003	9.30E-06
+/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900103_HE_lcnet_27-250keV_0.05s_all.lc	9.79503	47540	20153.04139	102.0925919	2.14E-05
+/home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504279/P0504279001/pipeline_output/P050427900104_HE_lcnet_27-250keV_0.05s_all.lc	9.79501	69780	20153.22361	102.0928003	9.30E-06
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600101_HE_lcnet_27-250keV_0.05s_all.lc	9.79476	51450	20154	102.0954061	2.30E-05
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600103_HE_lcnet_27-250keV_0.05s_all.lc	9.79495	10470	20154	102.0934257	1.74E-04
 /home/iist/aniket_data/hxmt_raw_data/decompressed_data//P0504196/P0504196001/pipeline_output/P050419600102_HE_lcnet_27-250keV_0.05s_all.lc	9.79491	10260	20154	102.0938426	5.53E-05
