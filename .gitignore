@@ -7,3 +7,4 @@ nicer_testing_energy_bin_pulse/*
 *.ipynb_checkpoints
 *.ipynb
 hxmt/hxmt_me_l3_products/
+hxmt_spec_share/
