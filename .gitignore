@@ -6,9 +6,15 @@ nicer_testing_energy_bin_pulse/*
 **/*.png
 *.ipynb_checkpoints
 *.ipynb
-HXMT/hxmt_me_l3_products/*
+# Ignore everything under hxmt_me_l3_products_pipeline/
+HXMT/hxmt_me_l3_products_pipeline/*
 HXMT_spec_share/*
 NICER_second_run/*
 NICER_third_run/*
 HXMT_combine_spectra_check/*
 settings.json
+HXMT/hxmt_experiment_period_fine_tuning/*
+NICER/unused_reused_output_nicer/*
+NICER/testing_folder/*
+
+
