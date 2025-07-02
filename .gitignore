@@ -8,3 +8,6 @@ nicer_testing_energy_bin_pulse/*
 *.ipynb
 hxmt/hxmt_me_l3_products/
 hxmt_spec_share/
+nicer_second_run/
+nicer_third_run/
+HXMT_combine_spectra_check/
